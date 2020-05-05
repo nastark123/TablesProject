@@ -1,3 +1,10 @@
+/*
+    This file is the Client class, which is responsible for all communications from the client.  It provides convenience methods for all supported
+    operations and serves as a gateway between the main client program and the server.
+ */
+
+package client;
+
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
@@ -10,64 +17,8 @@ public class Client {
     private InputStream in;
     private OutputStream out;
     private volatile HashMap<String, Table> map;
-//    public void main(String[] args) throws IOException,ClassNotFoundException {
-//        socket = new Socket("localhost", 967);
-//        in = socket.getInputStream();
-//        out = socket.getOutputStream();
-//
-//        HashMap<String, Table> map = readMap();
-//
-//        Table doubleTable = new Table("double");
-//        addTable(doubleTable);
-//
-//        TableEntry x = new TableEntry("x");
-//        x.setDoubleValue(15.0);
-//        TableEntry y = new TableEntry("y");
-//        y.setDoubleValue(30.0);
-//
-//        addEntry(doubleTable, x);
-//        addEntry(doubleTable, y);
-//
-//        map = readMap();
-//
-//        System.out.println(map.get("double").getEntry("x").getDoubleValue());
-//        System.out.println(map.get("double").getEntry("y").getDoubleValue());
 
-//        Table tab1 = new Table("test");
-//        TableEntry entry = new TableEntry("testentry");
-//        entry.setIntValue(10);
-//        tab1.addEntry(entry);
-//        map.put(tab1.getLabel(), tab1);
-//
-//        writeMap(map);
-//
-//        Table tab2 = new Table("test2");
-//        TableEntry entry2 = new TableEntry("testentry");
-//        entry2.setIntValue(20);
-//        tab2.addEntry(entry2);
-//
-//        addTable(tab2);
-//
-//        TableEntry entry3 = new TableEntry("testint");
-//        entry3.setIntValue(50);
-//
-//        addEntry(tab2, entry3);
-//
-//        map = readMap();
-//        System.out.println("First map entry value: " + map.get("test").getEntry("testentry").getIntValue());
-//        System.out.println("Second map entry value: " + map.get("test2").getEntry("testentry").getIntValue());
-//        System.out.println("Third map entry value: " + map.get("test2").getEntry("testint").getIntValue());
-//
-//        entry2.setIntValue(100);
-//
-//        updateEntry(tab2, entry2);
-//
-//        map = readMap();
-//        System.out.println("First map entry value: " + map.get("test").getEntry("testentry").getIntValue());
-//        System.out.println("Second map entry value: " + map.get("test2").getEntry("testentry").getIntValue());
-//        System.out.println("Third map entry value: " + map.get("test2").getEntry("testint").getIntValue());
-//    }
-    
+    //basic constructor, ip is the server ip, port is the port (is this good documentation yet?)
     public Client(String ip, int port) throws IOException, ClassNotFoundException {
         socket = new Socket("localhost", 967);
         in = socket.getInputStream();
@@ -76,6 +27,7 @@ public class Client {
         readMap();
     }
 
+    //reads the HashMap from the server into the one on the client end, does NOT return the value, you must call getMap()
     public synchronized void readMap() throws IOException, ClassNotFoundException {
         out.write(1);
 
@@ -88,6 +40,7 @@ public class Client {
         }
     }
 
+    //adds the specified table to the server, does not refresh the client end
     public synchronized void addTable(Table t) throws IOException {
         out.write(3);
 
@@ -99,6 +52,7 @@ public class Client {
         }
     }
 
+    //adds the specified entry to the specified table on the server
     public synchronized void addEntry(Table t, TableEntry e) throws IOException {
         out.write(4);
 
@@ -110,6 +64,7 @@ public class Client {
         }
     }
 
+    //updates the specified entry in the specified table on the server
     public synchronized void updateEntry(Table t, TableEntry e) throws IOException {
         out.write(6);
 
@@ -121,6 +76,7 @@ public class Client {
         }
     }
 
+    //removes the specified entry in the specified table on the server
     public synchronized void removeEntry(Table t, TableEntry e) throws IOException {
         out.write(5);
 
@@ -132,6 +88,8 @@ public class Client {
         }
     }
 
+    //pushes the local map to the server, and overwrites the one on the server end, DO NOT USE unless you absolutely know what you're doing, as the server
+    //will not preserve the data, it will overwrite it
     public synchronized void writeMap(HashMap<String, Table> map) throws IOException {
         out.write(2);
 
@@ -142,10 +100,15 @@ public class Client {
         }
     }
 
+    //returns the HashMap maintained on the client end
     public synchronized HashMap<String, Table> getMap() {
         return map;
     }
 
+    //TODO refactor getMap() into getLocalMap and make another function that retrieves the master one
+
+    //all of these functions deal with the local map, which can then be pushed to the server using the writeMap() function, I wouldn't recommend doing
+    //it this way, but you do you
     public synchronized void updateMap(HashMap<String, Table> m) {
         map = m;
     }

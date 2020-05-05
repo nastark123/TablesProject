@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ServerClientProtocol.iml" filepath="$PROJECT_DIR$/ServerClientProtocol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TablesProject.iml" filepath="$PROJECT_DIR$/TablesProject.iml" />
     </modules>
   </component>
 </project>

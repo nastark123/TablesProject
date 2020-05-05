@@ -15,7 +15,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1bUmUFfFJeQyarPHAsyDJhm3jBY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -23,7 +27,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/table" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -32,29 +36,29 @@
   </component>
   <component name="RunManager" selected="Application.ClientMain">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="ServerClientProtocol" />
+      <option name="MAIN_CLASS_NAME" value="client.Client" />
+      <module name="TablesProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClientMain" />
-      <module name="ServerClientProtocol" />
+      <module name="TablesProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Server" />
-      <module name="ServerClientProtocol" />
+      <option name="MAIN_CLASS_NAME" value="server.Server" />
+      <module name="TablesProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ServerMain" />
-      <module name="ServerClientProtocol" />
+      <module name="TablesProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -62,8 +66,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientMain" />
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.ServerMain" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
@@ -86,21 +90,25 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1588697695536" />
-    <state width="1557" height="220" key="GridCell.Tab.0.bottom" timestamp="1588704714717">
+    <state width="1557" height="220" key="GridCell.Tab.0.bottom" timestamp="1588706263104">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1588704714717" />
-    <state width="1557" height="220" key="GridCell.Tab.0.center" timestamp="1588704714717">
+    <state width="1557" height="220" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1588706263104" />
+    <state width="1557" height="220" key="GridCell.Tab.0.center" timestamp="1588706263104">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1588704714717" />
-    <state width="1557" height="220" key="GridCell.Tab.0.left" timestamp="1588704714717">
+    <state width="1557" height="220" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1588706263104" />
+    <state width="1557" height="220" key="GridCell.Tab.0.left" timestamp="1588706263103">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1588704714717" />
-    <state width="1557" height="220" key="GridCell.Tab.0.right" timestamp="1588704714717">
+    <state width="1557" height="220" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1588706263103" />
+    <state width="1557" height="220" key="GridCell.Tab.0.right" timestamp="1588706263104">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1588704714717" />
+    <state width="1557" height="220" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1588706263104" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1588706236241">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1588706236241" />
   </component>
 </project>

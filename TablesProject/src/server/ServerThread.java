@@ -1,3 +1,11 @@
+/*
+    This file is the ServerThread class, which handles the interactions with clients.  Each client will have its own thread, and each thread is
+    responsible for interacting with the main HashMap in the Server class that it belongs to.
+    TODO change the command codes from standard ints to an enum
+ */
+
+package server;
+
 import table.Table;
 import table.TableEntry;
 

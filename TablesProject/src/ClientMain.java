@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.HashMap;
+
+import client.Client;
 import table.Table;
 import table.TableEntry;
 
