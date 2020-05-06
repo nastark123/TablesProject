@@ -1,44 +1,48 @@
 /*
-    This file is the ServerThread class, which handles the interactions with clients.  Each client will have its own thread, and each thread is
-    responsible for interacting with the main HashMap in the Server class that it belongs to.
+    This file is the TableServerThread class, which handles the interactions with clients.  Each tablesproject.client will have its own thread, and each thread is
+    responsible for interacting with the main HashMap in the TableServer class that it belongs to.
     TODO change the command codes from standard ints to an enum
  */
 
-package server;
+package tablesproject.server;
 
-import table.Table;
-import table.TableEntry;
+import tablesproject.table.Table;
+import tablesproject.table.TableEntry;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
 
-public class ServerThread extends Thread {
+public class TableServerThread extends Thread {
     private Socket s;
     private InputStream in;
     private OutputStream out;
-    private Server server;
+    private TableServer tableServer;
+    private boolean done = false;
 
-    public ServerThread(Socket s, InputStream in, OutputStream out, Server server) {
+    public TableServerThread(Socket s, InputStream in, OutputStream out, TableServer tableServer) {
         this.s = s;
         this.in = in;
         this.out = out;
-        this.server = server;
-        System.out.println("New client connected: " + s.getInetAddress());
+        this.tableServer = tableServer;
+        System.out.println("New tablesproject.client connected: " + s.getInetAddress());
     }
 
     @Override
     public void run() {
-        while(true) {
+        while(!done) {
             try {
                 int n = in.read();
                 System.out.println(n);
                 switch (n) {
+                    case 0:
+                        disconnect();
+                        break;
                     case 1:
-                        writeMap(server.getMap());
+                        writeMap(tableServer.getMap());
                         break;
                     case 2:
-                        server.updateMap(readMap());
+                        tableServer.updateMap(readMap());
                         break;
                     case 3:
                         addTable();
@@ -53,11 +57,26 @@ public class ServerThread extends Thread {
                         updateEntry();
                         break;
                 }
-                System.out.println(server.getMap().values());
-            } catch (Exception e) {
-
+                System.out.println(tableServer.getMap().values());
+            } catch (IOException ie) {
+                System.out.println("Error with communicating with tablesproject.client");
+            } catch (ClassNotFoundException ce) {
+                System.out.println("Error with reading object");
             }
         }
+        try {
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void disconnect() throws IOException {
+        out.write(0);
+        done = true;
+        System.out.println("TableClient from " + s.getInetAddress() + " disconnected");
     }
 
     public HashMap<String, Table> readMap() throws IOException, ClassNotFoundException {
@@ -83,10 +102,10 @@ public class ServerThread extends Thread {
         Table t = (Table) objectInputStream.readObject();
         String label = t.getLabel();
         TableEntry e = (TableEntry) objectInputStream.readObject();
-        t = server.mapGet(label);
+        t = tableServer.mapGet(label);
         t.addEntry(e);
-        server.mapRemove(t);
-        server.mapPut(t);
+        tableServer.mapRemove(t);
+        tableServer.mapPut(t);
     }
 
     public void removeEntry() throws IOException, ClassNotFoundException {
@@ -96,10 +115,10 @@ public class ServerThread extends Thread {
         Table t = (Table) objectInputStream.readObject();
         String label = t.getLabel();
         TableEntry e = (TableEntry) objectInputStream.readObject();
-        t = server.mapGet(label);
+        t = tableServer.mapGet(label);
         t.removeEntry(e);
-        server.mapRemove(t);
-        server.mapPut(t);
+        tableServer.mapRemove(t);
+        tableServer.mapPut(t);
     }
 
     public void updateEntry() throws IOException, ClassNotFoundException {
@@ -109,10 +128,10 @@ public class ServerThread extends Thread {
         Table t = (Table) objectInputStream.readObject();
         String label = t.getLabel();
         TableEntry e = (TableEntry) objectInputStream.readObject();
-        t = server.mapGet(label);
+        t = tableServer.mapGet(label);
         t.update(e);
-        server.mapRemove(t);
-        server.mapPut(t);
+        tableServer.mapRemove(t);
+        tableServer.mapPut(t);
     }
 
     public void addTable() throws IOException, ClassNotFoundException {
@@ -121,6 +140,6 @@ public class ServerThread extends Thread {
         ObjectInputStream objectInputStream = new ObjectInputStream((in));
 //        String l = (String) objectInputStream.readObject();
         Table t = (Table) objectInputStream.readObject();
-        server.mapPut(t);
+        tableServer.mapPut(t);
     }
 }

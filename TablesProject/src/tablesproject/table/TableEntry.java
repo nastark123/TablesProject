@@ -1,4 +1,4 @@
-package table;
+package tablesproject.table;
 
 import java.io.Serializable;
 
@@ -6,13 +6,15 @@ public class TableEntry implements Serializable {
     private String label;
     private Value value;
     private Table parentTable;
+    private boolean isSubTable;
 
-    protected TableEntry(String l, Object o, Types t) {
+    public TableEntry(String l, Object o, Types t) {
         this.label = l;
+        this.isSubTable = o instanceof Table;
         this.value = new Value(o, t);
     }
 
-    protected TableEntry(String l, Value v) {
+    public TableEntry(String l, Value v) {
         this.label = l;
         this.value = v;
     }
@@ -20,6 +22,10 @@ public class TableEntry implements Serializable {
     public TableEntry(String l) {
         this.label = l;
         this.value = null;
+    }
+
+    public boolean isSubTable() {
+        return isSubTable;
     }
 
     public String getLabel() {
@@ -108,5 +114,9 @@ public class TableEntry implements Serializable {
     //returns the float value if the value is a float, or defaults to 0.0f otherwise
     public Float getFloatValue() {
         return (value.getType() == Types.FLOAT) ? (Float) value.getValue() : 0.0f;
+    }
+
+    public Table getSubTable() {
+        return (value.getType() == Types.TABLE) ? (Table) value.getValue() : null;
     }
 }

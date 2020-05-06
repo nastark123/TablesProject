@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TablesProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TablesProject_jar</output-path>
+    <root id="archive" name="TablesProject.jar">
+      <element id="module-output" name="TablesProject" />
+    </root>
+  </artifact>
+</component>

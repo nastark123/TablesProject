@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TablesProject:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a186c3be-a8c6-4a7c-9cf1-b0b330c6b405" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,21 +32,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ServerMain.java" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.excludes" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vikin\IdeaProjects\ServerClientProtocol\src\table" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ClientMain">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.Client" />
-      <module name="TablesProject" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClientMain" />
       <module name="TablesProject" />
@@ -49,8 +54,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.Server" />
+    <configuration name="ClientMain2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClientMain2" />
       <module name="TablesProject" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -63,12 +68,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tablesproject.client.TableClient" />
+      <module name="TablesProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TablesProject.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/TablesProject_jar/TablesProject.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ClientMain2" />
         <item itemvalue="Application.ServerMain" />
-        <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server" />
+        <item itemvalue="JAR Application.TablesProject.jar" />
+        <item itemvalue="Application.TableClient" />
       </list>
     </recent_temporary>
   </component>
@@ -86,29 +103,41 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="208" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588734250412">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="208" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1588734250412" />
     <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588697695536">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1588697695536" />
-    <state width="1557" height="220" key="GridCell.Tab.0.bottom" timestamp="1588706263104">
+    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1588735022659">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1588706263104" />
-    <state width="1557" height="220" key="GridCell.Tab.0.center" timestamp="1588706263104">
+    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1588735022659" />
+    <state width="1557" height="220" key="GridCell.Tab.0.bottom" timestamp="1588789860288">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1588706263104" />
-    <state width="1557" height="220" key="GridCell.Tab.0.left" timestamp="1588706263103">
+    <state width="1557" height="220" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1588789860288" />
+    <state width="1557" height="220" key="GridCell.Tab.0.center" timestamp="1588789860287">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1588706263103" />
-    <state width="1557" height="220" key="GridCell.Tab.0.right" timestamp="1588706263104">
+    <state width="1557" height="220" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1588789860287" />
+    <state width="1557" height="220" key="GridCell.Tab.0.left" timestamp="1588789860287">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="220" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1588706263104" />
-    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1588706236241">
+    <state width="1557" height="220" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1588789860287" />
+    <state width="1557" height="220" key="GridCell.Tab.0.right" timestamp="1588789860287">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1588706236241" />
+    <state width="1557" height="220" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1588789860287" />
+    <state x="280" y="4" key="SettingsEditor" timestamp="1588782024018">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="280" y="4" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1588782024018" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1588773036476">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1588773036476" />
   </component>
 </project>

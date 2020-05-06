@@ -1,17 +1,17 @@
 /*
-    This file is the Server class, which serves to create the threads that the clients interact with, as well as maintains the master HashMap
+    This file is the TableServer class, which serves to create the threads that the clients interact with, as well as maintains the master HashMap
     used to store all of the Table objects that the user requests.  This class should be threadsafe, but it has not been tested thoroughly enough
     for me to say that for sure.
 */
 
-package server;
+package tablesproject.server;
 
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
-import table.Table;
+import tablesproject.table.Table;
 
-public class Server {
+public class TableServer {
     private Socket socket;
     private ServerSocket sSocket;
     private InputStream in;
@@ -19,7 +19,7 @@ public class Server {
     private volatile HashMap<String, Table> map;
 
     //Constructor, not much to look at here
-    public Server(int port) throws IOException {
+    public TableServer(int port) throws IOException {
         sSocket = new ServerSocket(port);
         map = new HashMap<>();
     }
@@ -30,12 +30,12 @@ public class Server {
             socket = sSocket.accept();
             in = socket.getInputStream();
             out = socket.getOutputStream();
-            ServerThread thread = new ServerThread(socket, in, out, this);
+            TableServerThread thread = new TableServerThread(socket, in, out, this);
             thread.start();
         }
     }
 
-    //returns the HashMap that is maintained by this server object
+    //returns the HashMap that is maintained by this tablesproject.server object
     public synchronized HashMap<String, Table> getMap() {
         return map;
     }

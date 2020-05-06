@@ -1,4 +1,4 @@
-package table;
+package tablesproject.table;
 
 import java.io.Serializable;
 

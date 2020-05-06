@@ -1,4 +1,4 @@
-package table;
+package tablesproject.table;
 
 public enum Types {
     BOOLEAN(0),
@@ -10,7 +10,8 @@ public enum Types {
     FLOAT(6),
     DOUBLE(7),
     STRING(8),
-    OBJECT(9);
+    OBJECT(9),
+    TABLE(10);
 
     private int i;
 

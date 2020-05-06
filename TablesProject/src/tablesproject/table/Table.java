@@ -1,4 +1,4 @@
-package table;
+package tablesproject.table;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -11,23 +11,28 @@ public class Table implements Serializable {
         this.label = l;
     }
 
-    //sets the HashMap that represents this table to the one specified, would not recommend using
+    //sets the HashMap that represents this tablesproject.table to the one specified, would not recommend using
     public void setMap(HashMap<String, TableEntry> map) {
         this.map = map;
     }
 
-    //returns the label of this table (pretty much its name)
+    //returns the label of this tablesproject.table (pretty much its name)
     public String getLabel() {
         return label;
     }
 
-    //adds the specified entry to this table
+    //adds the specified entry to this tablesproject.table
     public void addEntry(TableEntry e) {
         map.put(e.getLabel(), e);
         e.setParentTable(this);
     }
 
-    //removes the specified entry from the table
+    //similar to addEntry, but adds a subtable instead
+    public void addSubtable(Table t) {
+        map.put(t.getLabel(), new TableEntry(t.getLabel(), t, Types.TABLE));
+    }
+
+    //removes the specified entry from the tablesproject.table
     public void removeEntry(TableEntry e) {
         map.remove(e.getLabel());
     }
