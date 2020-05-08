@@ -40,6 +40,10 @@ public class TableEntry implements Serializable {
         return this.parentTable;
     }
 
+    public void setBooleanValue(Boolean b) {
+        value = new Value(b, Types.BOOLEAN);
+    }
+
     public void setByteValue(Byte b) {
         value = new Value(b, Types.BYTE);
     }
@@ -104,6 +108,11 @@ public class TableEntry implements Serializable {
     //returns the String value if the value is a String, or defaults to a space otherwise
     public String getStringValue() {
         return (value.getType() == Types.STRING) ? (String) value.getValue() : " ";
+    }
+
+    //returns the boolean value if the value is a boolean, or false otherwise
+    public Boolean getBooleanValue() {
+        return (value.getType() == Types.BOOLEAN) ? (Boolean) value.getValue() : false;
     }
 
     //returns the byte value if the value is a byte, or defaults to 0 otherwise
