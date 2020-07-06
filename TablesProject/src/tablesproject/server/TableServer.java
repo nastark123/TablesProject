@@ -30,7 +30,7 @@ public class TableServer {
             socket = sSocket.accept();
             in = socket.getInputStream();
             out = socket.getOutputStream();
-            TableServerThread thread = new TableServerThread(socket, in, out, this);
+            TableServerThread thread = new TableServerThread(socket, in, out, this, 5000);
             thread.start();
         }
     }
