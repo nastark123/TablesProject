@@ -18,13 +18,17 @@ public class TableServerThread extends Thread {
     private InputStream in;
     private OutputStream out;
     private TableServer tableServer;
+    private long timeoutMillis;
+    private long lastHeartbeat;
     private boolean done = false;
 
-    public TableServerThread(Socket s, InputStream in, OutputStream out, TableServer tableServer) {
+    public TableServerThread(Socket s, InputStream in, OutputStream out, TableServer tableServer, long timeoutMillis) {
         this.s = s;
         this.in = in;
         this.out = out;
         this.tableServer = tableServer;
+        this.timeoutMillis = timeoutMillis;
+        this.lastHeartbeat = System.currentTimeMillis();
         System.out.println("New tablesproject.client connected: " + s.getInetAddress());
     }
 
@@ -32,30 +36,37 @@ public class TableServerThread extends Thread {
     public void run() {
         while(!done) {
             try {
-                int n = in.read();
-                System.out.println(n);
-                switch (n) {
-                    case 0:
-                        disconnect();
-                        break;
-                    case 1:
-                        writeMap(tableServer.getMap());
-                        break;
-                    case 2:
-                        tableServer.updateMap(readMap());
-                        break;
-                    case 3:
-                        addTable();
-                        break;
-                    case 4:
-                        addEntry();
-                        break;
-                    case 5:
-                        removeEntry();
-                        break;
-                    case 6:
-                        updateEntry();
-                        break;
+                if(System.currentTimeMillis() - lastHeartbeat > timeoutMillis) {
+                    disconnect();
+                }
+                if(in.available() > 0) {
+                    int n = in.read();
+                    switch (n) {
+                        case 0:
+                            disconnect();
+                            break;
+                        case 1:
+                            writeMap(tableServer.getMap());
+                            break;
+                        case 2:
+                            tableServer.updateMap(readMap());
+                            break;
+                        case 3:
+                            addTable();
+                            break;
+                        case 4:
+                            addEntry();
+                            break;
+                        case 5:
+                            removeEntry();
+                            break;
+                        case 6:
+                            updateEntry();
+                            break;
+                        case 255:
+                            sendHeartbeat();
+                            break;
+                    }
                 }
                 System.out.println(tableServer.getMap().values());
             } catch (IOException ie) {
@@ -141,5 +152,11 @@ public class TableServerThread extends Thread {
 //        String l = (String) objectInputStream.readObject();
         Table t = (Table) objectInputStream.readObject();
         tableServer.mapPut(t);
+    }
+
+    //send a heartbeat signal back to the client to keep the connection alive
+    public void sendHeartbeat() throws IOException {
+        out.write(255);
+        out.flush();
     }
 }

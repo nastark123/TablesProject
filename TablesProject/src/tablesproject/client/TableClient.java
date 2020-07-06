@@ -191,4 +191,20 @@ public class TableClient {
         }
         return t;
     }
+
+    //returns true if the server responds with a connection, false if it fails
+    public synchronized boolean sendHeartbeat() {
+        try {
+            out.write(255);
+            out.flush();
+
+            if (in.read() != 255) {
+                return true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 }
